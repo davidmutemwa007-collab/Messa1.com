@@ -1,1 +1,0 @@
-# MESA backend uses only Python standard library. No pip installs required.

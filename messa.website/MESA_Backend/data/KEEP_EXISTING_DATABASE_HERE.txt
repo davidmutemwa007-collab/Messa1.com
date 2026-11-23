@@ -1,2 +1,0 @@
-Copy your existing mesa.sqlite3 and secret.key into this folder before starting.
-Do not overwrite your original database backup.
