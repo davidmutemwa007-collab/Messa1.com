@@ -1,0 +1,14 @@
+DATABASE NOTES
+---------------
+SQLite file: MESA_Backend/data/mesa.sqlite3
+Tables: users, bookings, orders.
+Password storage: PBKDF2-HMAC-SHA256 with unique random salt (310,000 iterations).
+Session: signed, HttpOnly, SameSite=Lax cookie with 7-day expiry; each session
+has a server-side revocation record and disabled accounts lose access immediately.
+Set MESA_ENV=production behind HTTPS to mark the cookie Secure.
+Menu prices and product IDs are validated server-side before orders are stored.
+Do not delete the data folder if you want to preserve accounts, bookings and orders.
+Before applying schema changes, make an independent SQLite backup. A pre-session
+migration copy is kept at data/mesa.sqlite3.backup-before-session-migration-20261123.
+The newer data/mesa.sqlite3.backup-current-20261123 snapshot includes the current
+account/order data and should be kept separate from public deployment artifacts.
