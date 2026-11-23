@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: mesa-api
+    runtime: python
+    plan: starter
+    buildCommand: python -m py_compile app.py
+    startCommand: python app.py
+    healthCheckPath: /api/health
+    disk:
+      name: mesa-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.
+      - key: PORT
+        value: 10000
+      - key: MESA_HOST
+        value: 0.0.0.0
+      - key: MESA_DATABASE
+        value: /var/data/mesa.sqlite3
+      - key: MESA_SECRET_KEY
+        generateValue: true
+      - key: MESA_COOKIE_SAMESITE
+        value: None
+      - key: MESA_COOKIE_SECURE
+        value: "true"
+      - key: MESA_ALLOWED_ORIGINS
+        sync: false

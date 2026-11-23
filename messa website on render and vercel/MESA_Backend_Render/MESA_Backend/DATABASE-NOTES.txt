@@ -1,0 +1,8 @@
+DATABASE NOTES
+---------------
+SQLite file: MESA_Backend/data/mesa.sqlite3
+Tables: users, bookings, orders.
+Password storage: PBKDF2-HMAC-SHA256 with unique random salt (310,000 iterations).
+Session: signed, HttpOnly, SameSite=Lax cookie with 7-day expiry.
+Menu prices and product IDs are validated server-side before orders are stored.
+Do not delete the data folder if you want to preserve accounts, bookings and orders.
